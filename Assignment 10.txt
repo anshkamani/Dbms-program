@@ -1,0 +1,75 @@
+Assignment 10
+
+1. Create the following table named table as CUSTOMER with proper normalization.
+ANS:CREATE TABLE CUSTOMER (CUST_NO NUMBER(4) PRIMARY KEY,FIRST_NAME VARCHAR2(20) NOT NULL,
+LAST_NAME VARCHAR2(20),ADDRESS VARCHAR2(20),CITY VARCHAR2(8),STATE VARCHAR2(20),PIN NUMBER(6),B_DATE DATE,STATUS CHAR(1));
+
+2. Insert the following data into the CUSTOMER table:
+ANS:INSERT INTO CUSTOMER VALUES (&CUST_NO, '&FIRST_NAME', '&LAST_NAME', '&ADDRESS', '&CITY', '&STATE', &PIN, TO_DATE('&B_DATE','DD-MM-YYYY'), '&STATUS');
+
+3. Display all the records from the table.
+ANS:select * from CUSTOMER;
+
+4. Display all the records from the table where state is KARNATAKA.
+ANS:select * from CUSTOMER where state='KARNATAKA';
+
+5. Delete the row from the table where PIN CODE is 576201.
+ANS:DELETE FROM CUSTOMER WHERE PIN_CODE = 576201;
+
+6. Set the PIN CODE equal 476001 where CUST_NO=1004.
+ANS:UPDATE CUSTOMER SET PIN_CODE = 476001 WHERE CUST_NO = 1004;
+
+7. Change the ADDRESS as “KAVI MUDDANNA MARG” AND PIN=576104 where
+CUST_NO=1003.
+ANS:UPDATE CUSTOMER SET ADDRESS = 'KAVI MUDDANNA MARG', PIN_CODE = 576104 WHERE CUST_NO = 1003;
+
+8. Delete the records of GOA state from the table and then retrieve all the records back.
+ANS:DELETE FROM your_table_name
+WHERE state = 'GOA';
+
+SELECT * FROM your_table_name;
+
+9. List all the records for INVALID („I‟) persons.
+ANS:SELECT * FROM CUSTOMER WHERE STATUS = 'I';
+
+10.Select all the records with single occurrence (without duplication) of state from the table.
+ANS:SELECT DISTINCT STATE FROM CUSTOMER;
+
+11.Sort and display the customer data, in the alphabetic order of state.
+ANS:select * from CUSTOMER order by state;
+
+12.Sort and display the state field in the in descending order.
+ANS:select * from CUSTOMER order by state desc;
+
+13.Select the records of KARNATAKA customers who are valid („V‟).
+ANS:select * from CUSTOMER where state='KARNATAKA' and status='V';
+
+14.Retrieve records of Karnataka / Kerala customers.
+ANS:select * from CUSTOMER where state in ('KERALA','KARNATAKA');
+
+15.Retrieve records of Karnataka / Kerala customers who are ACTIVE („A‟).
+ANS:select * from CUSTOMER where state in ('KERALA','KARNATAKA') AND status ='A';
+
+16.Retrieve records of Karnataka customers with pin code 576201.
+ANS: select * from customer where state='KARNATAKA' AND PIN=576201;
+
+17.Display all the rows from the table except for customer number 1005.
+ANS:SELECT * FROM CUSTOMER WHERE CUST_NO <> 1005;
+
+18.Retrieve rows where the state name begins with K and following by any other character. 
+ANS:SELECT * FROM CUSTOMER WHERE STATE LIKE 'K%';
+
+19.Retrieve rows where name contains the word RAJ embedded it.
+ANS:SELECT * FROM CUSTOMER WHERE FIRST_NAME LIKE '%RAJ%';
+
+20.Display all the row who‟s CUST_NO is in the range from 1003 to 1005.
+ANS:SELECT * FROM CUSTOMER WHERE CUST_NO BETWEEN 1003 AND 1005;
+
+21.Display all the rows whose dates are in the range of 10-JAN-71 and 31-DEC-71. 
+ANS: SELECT * FROM CUSTOMER WHERE B_DATE BETWEEN '10-JAN-71' AND '31-DEC-71';
+
+22.Retrieve all the rows where city column equals to UDP or MNG or BNG or PGN.
+ANS:SELECT * FROM CUSTOMER WHERE CITY IN ('UDP','MNG','BNG','PGN');
+
+23.Rename customer table to CUST.
+ANS:RENAME CUSTOMER TO CUST;
